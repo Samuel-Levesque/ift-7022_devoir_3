@@ -10,9 +10,6 @@ from sklearn.metrics import confusion_matrix, classification_report
 
 from Create_features import  Objet_De_Compte
 
-
-
-
 def analyse_rapide_modeles(corpus_train,y_train,bool_ajouter_autres_features):
     """
     Analyse rapidement quelques modèles avec des paramètres déterminé arbitrairement
