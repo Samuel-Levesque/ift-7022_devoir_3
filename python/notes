@@ -1,0 +1,18 @@
+Les émoticons seront pris en compte, car ils sont transformés en text
+
+pas de sélection de classes ouvertes, car abréviations, nouvelles expressions (ex:lol), emoji en texte, fautes
+on peut toutefois enlever les stop words
+
+Le score final n'est peut être pas représentatif des score des autres, car le vrai jeu de données n'a pas la même proportion de données
+
+
+
+amélioration:
+1. Considérer l'intéraction entre les échanges de textots plutot que tout mettre dans un bloc
+2. Augmenter la vitesse du code, la fonction qui ajoute les sentiments est très lente
+3. Ne pas tester autant de modèle, 456 c'est beaucoup retirer valeur c=1000 et 10000
+4. tester des valeurs de n gram supérieur à 1
+
+
+j'ai pu m'améliorer à coder
+score pe
