@@ -10,7 +10,7 @@ from sklearn.metrics import confusion_matrix, classification_report
 
 from Create_features import  Objet_De_Compte
 
-def analyse_rapide_modeles(corpus_train,y_train,bool_ajouter_autres_features):
+def analyse_rapide_modeles(corpus_train, y_train, bool_ajouter_autres_features):
     """
     Analyse rapidement quelques modèles avec des paramètres déterminé arbitrairement
     :param corpus_train:
@@ -32,8 +32,8 @@ def analyse_rapide_modeles(corpus_train,y_train,bool_ajouter_autres_features):
         X_train_wc = obj_features_X_wc.transform_and_add_all_other_features(corpus_train)
         X_train_bin = obj_features_X_bin.transform_and_add_all_other_features(corpus_train)
         X_train_tfidf = obj_features_X_tfidf.transform_and_add_all_other_features(corpus_train)
-    else:
 
+    else:
         X_train_wc = pd.DataFrame(obj_features_X_wc.transform(corpus_train).toarray())
         X_train_bin = pd.DataFrame(obj_features_X_bin.transform(corpus_train).toarray())
         X_train_tfidf = pd.DataFrame(obj_features_X_tfidf.transform(corpus_train).toarray())
@@ -49,7 +49,7 @@ def analyse_rapide_modeles(corpus_train,y_train,bool_ajouter_autres_features):
     analyse_models(X_train_tfidf, y_train)
 
 
-def optimisation_hyper_parametres(corpus_train,y_train,bool_ajouter_autres_features):
+def optimisation_hyper_parametres(corpus_train, y_train, bool_ajouter_autres_features):
     """
     but: sauvegarder dict avec {nom de modèle de classification, score, dictionnaire meilleurs paramètres classification du modèle,
     nom de type d'objet de compte, dict de paramètre d'objet de compte} du modèle avec meilleur score.
@@ -60,23 +60,25 @@ def optimisation_hyper_parametres(corpus_train,y_train,bool_ajouter_autres_featu
     """
     ############################## Liste de paramètres à regarder ######################################################
     #List de test pour objet de compte
-    list_n_gram=[1]
-    list_min_freq=[2,5,10]
-    list_nom_objet_compte=["Word counts","Binary Word counts","TfiDf"]
+    list_n_gram = [1]
+    list_min_freq = [2,5,10]
+    list_nom_objet_compte = ["Word counts", "Binary Word counts", "TfiDf"]
 
     #List SVM
-    list_SVM_c=[0.1,1,10]
-    list_SVM_kernel=["rbf","linear"]
+    list_SVM_c=[0.1, 1, 10]
+    list_SVM_kernel=["rbf", "linear"]
 
     #List K-PPV
-    list_KPPV_k=[2,5,8,13,18,23]
-    list_KPPV_weight=["uniform","distance"]
+    list_KPPV_k=[2, 5, 8, 13, 18, 23]
+    list_KPPV_weight=["uniform", "distance"]
 
     #List log reg
-    list_LogReg_penalty=["l1","l2"]
+    list_LogReg_penalty=["l1", "l2"]
 
     #List MLP
-    list_MLP_hidden_layer_shape=[(10,),(10,10),(50,50),(100,100),(200,200),(100,100,100),(100,100,100,100),(50,50,50,50,50),(10,10,10,10,10,10,10,10)]
+    list_MLP_hidden_layer_shape=[(10,), (10,10), (50,50), (100,100), (200,200),
+                                 (100,100,100), (100,100,100,100),(50,50,50,50,50),
+                                 (10,10,10,10,10,10,10,10)]
 
     ####################################################################################################################
 
@@ -85,32 +87,38 @@ def optimisation_hyper_parametres(corpus_train,y_train,bool_ajouter_autres_featu
     for n_gram in list_n_gram:
         for min_freq in list_min_freq:
             for nom_obj_compte in list_nom_objet_compte:
+
                 #######Objet de compte######
-                obj_features_X =Objet_De_Compte(nom_obj_compte, n_gram=n_gram, freq_min=min_freq)
+                obj_features_X = Objet_De_Compte(nom_obj_compte, n_gram=n_gram, freq_min=min_freq)
                 obj_features_X.fit(corpus_train)
 
                 if bool_ajouter_autres_features:
-                    X_train=obj_features_X.transform_and_add_all_other_features(corpus_train).values
+                    X_train = obj_features_X.transform_and_add_all_other_features(corpus_train).values
                 else:
-                    X_train=obj_features_X.transform(corpus_train).toarray()
+                    X_train = obj_features_X.transform(corpus_train).toarray()
 
 
                 #######SVM########
                 for par_c in list_SVM_c:
                     for par_kernel in list_SVM_kernel:
-                        clf=SVC(C=par_c,kernel=par_kernel)
-                        score=score_simple_concours(X_train,y_train,clf)
-                        dict_par={"clf name":"SVM","score":score,"Dict param clf":{"C":par_c,"Kernel":par_kernel},
-                                  "Nom compteur":nom_obj_compte,"Dict param compteur":{"n gram":n_gram,"freq min":min_freq}}
+                        clf = SVC(C=par_c, kernel=par_kernel)
+                        score = score_simple_concours(X_train, y_train, clf)
+                        dict_par={"clf name": "SVM",
+                                  "score": score,
+                                  "Dict param clf": {"C":par_c,"Kernel":par_kernel},
+                                  "Nom compteur": nom_obj_compte,
+                                  "Dict param compteur": {"n gram":n_gram,"freq min":min_freq}
+                                  }
                         list_tous_dict.append(dict_par)
                         print(dict_par)
 
                 #######KPPV########
                 for k in list_KPPV_k:
                     for weight in list_KPPV_weight:
-                        clf = KNeighborsClassifier(n_neighbors=k,weights=weight)
+                        clf = KNeighborsClassifier(n_neighbors=k, weights=weight)
                         score = score_simple_concours(X_train, y_train, clf)
-                        dict_par = {"clf name": "KPPV", "score": score,
+                        dict_par = {"clf name": "KPPV",
+                                    "score": score,
                                     "Dict param clf": {"k": k, "Weight": weight},
                                     "Nom compteur": nom_obj_compte,
                                     "Dict param compteur": {"n gram": n_gram, "freq min": min_freq}}
@@ -132,7 +140,8 @@ def optimisation_hyper_parametres(corpus_train,y_train,bool_ajouter_autres_featu
                 for layers_shape in list_MLP_hidden_layer_shape:
                     clf = MLPClassifier(hidden_layer_sizes=layers_shape)
                     score = score_simple_concours(X_train, y_train, clf)
-                    dict_par = {"clf name": "MLP", "score": score,
+                    dict_par = {"clf name": "MLP",
+                                "score": score,
                                 "Dict param clf": {"hidden layers sizes": layers_shape},
                                 "Nom compteur": nom_obj_compte,
                                 "Dict param compteur": {"n gram": n_gram, "freq min": min_freq}}
@@ -140,18 +149,14 @@ def optimisation_hyper_parametres(corpus_train,y_train,bool_ajouter_autres_featu
                     print(dict_par)
 
 
-
-
-
-
     #################################Dictionnaire du modèle avec le plus haut score#####################################
     max_score=0
-    for i in range(0,len(list_tous_dict)):
-        if list_tous_dict[i]["score"]> max_score:
-            max_score=list_tous_dict[i]["score"]
-            dict_meilleur_model=list_tous_dict[i]
+    for i in range(0, len(list_tous_dict)):
+        if list_tous_dict[i]["score"] > max_score:
+            max_score = list_tous_dict[i]["score"]
+            dict_meilleur_model = list_tous_dict[i]
 
-    print("\nMeilleur model:",dict_meilleur_model)
+    print("\nMeilleur model:", dict_meilleur_model)
 
     with open('Dictionnaire_parametre_meilleur_model', 'wb') as handle:
         pickle.dump(dict_meilleur_model, handle, protocol=pickle.HIGHEST_PROTOCOL)
@@ -166,45 +171,45 @@ def create_model_from_dict_prameters(dict):
     :param dict:
     :return: clf, modèle de type
     """
-    nom_model=dict["clf name"]
-    dict_param_model=dict["Dict param clf"]
+    nom_model = dict["clf name"]
+    dict_param_model = dict["Dict param clf"]
 
-    if nom_model=="SVM":
-        clf=SVC(C=dict_param_model["C"],kernel=dict_param_model["Kernel"])
-    elif nom_model=="KPPV":
-        clf=KNeighborsClassifier(n_neighbors=dict_param_model["k"],weights=dict_param_model["Weight"])
-    elif nom_model=="LogReg":
-        clf=LogisticRegression(penalty=dict_param_model["penalty"])
-    elif nom_model=="MLP":
-        clf=MLPClassifier(hidden_layer_sizes=dict_param_model["hidden layers sizes"])
+    if nom_model == "SVM":
+        clf = SVC(C=dict_param_model["C"], kernel=dict_param_model["Kernel"])
 
+    elif nom_model == "KPPV":
+        clf = KNeighborsClassifier(n_neighbors=dict_param_model["k"], weights=dict_param_model["Weight"])
+
+    elif nom_model == "LogReg":
+        clf = LogisticRegression(penalty=dict_param_model["penalty"])
+
+    elif nom_model == "MLP":
+        clf = MLPClassifier(hidden_layer_sizes=dict_param_model["hidden layers sizes"])
 
     return clf
 
 
-def analyse_models(X,y):
+def analyse_models(X, y):
     """
     Calcul le score de quelques modèles rapidement
     :param X:
     :param y:
     :return:
     """
-    clf=SVC(random_state=123)
-    print("Score SVM:",score_simple_concours(X.values,y,clf))
+    clf = SVC(random_state=123)
+    print("Score SVM:", score_simple_concours(X.values, y, clf))
 
-    clf=KNeighborsClassifier(5)
+    clf = KNeighborsClassifier(5)
     print("Score K-PPV:", score_simple_concours(X.values, y, clf))
 
-    clf=LogisticRegression(random_state=123)
+    clf = LogisticRegression(random_state=123)
     print("Score Régression logistique:", score_simple_concours(X.values, y, clf))
 
-    clf=MLPClassifier(hidden_layer_sizes=(100,100),random_state=123)
+    clf = MLPClassifier(hidden_layer_sizes=(100,100), random_state=123)
     print("Score MLP:", score_simple_concours(X.values, y, clf))
 
 
-
-
-def create_X_from_dict_parameters(dict,corpus_train,corpus_test,bool_ajouter_autres_features):
+def create_X_from_dict_parameters(dict, corpus_train, corpus_test, bool_ajouter_autres_features):
     """
     Renvoie un X_train et X_test sous forme d'array selon les paramètres dans dict qui viennent créer notre objet de compte
     :param dict:
@@ -213,32 +218,29 @@ def create_X_from_dict_parameters(dict,corpus_train,corpus_test,bool_ajouter_aut
     :param bool_ajouter_autres_features:
     :return:
     """
-    nom_obj_compte=dict["Nom compteur"]
-    n_gram=dict["Dict param compteur"]["n gram"]
-    min_freq=dict["Dict param compteur"]["freq min"]
-    obj_features_X=Objet_De_Compte(nom_obj_compte, n_gram=n_gram, freq_min=min_freq)
+    nom_obj_compte = dict["Nom compteur"]
+    n_gram = dict["Dict param compteur"]["n gram"]
+    min_freq = dict["Dict param compteur"]["freq min"]
+    obj_features_X = Objet_De_Compte(nom_obj_compte, n_gram=n_gram, freq_min=min_freq)
     obj_features_X.fit(corpus_train)
 
     if bool_ajouter_autres_features:
-        X_train=obj_features_X.transform_and_add_all_other_features(corpus_train).values
-        X_test=obj_features_X.transform_and_add_all_other_features(corpus_test).values
+        X_train = obj_features_X.transform_and_add_all_other_features(corpus_train).values
+        X_test = obj_features_X.transform_and_add_all_other_features(corpus_test).values
+
     else:
         X_train = obj_features_X.transform(corpus_train).toarray()
-        X_test=obj_features_X.transform(corpus_test).toarray()
+        X_test = obj_features_X.transform(corpus_test).toarray()
 
-    return X_train,X_test
-
-
-
-
+    return X_train, X_test
 
 
 ########################################## Fonction de score ###########################################################
-def score_simple_concours(X,y,clf):
+def score_simple_concours(X, y, clf):
     '''
-        Calcul le score de compétition avec k fold, k=3 à partir d'un échantillon X y et un model clf
-        :return: le score moyen
-        '''
+    Calcul le score de compétition avec k fold, k=3 à partir d'un échantillon X y et un model clf
+    :return: le score moyen
+    '''
     kf = KFold(n_splits=3, shuffle=True, random_state=1234)
     list_score = []
 
@@ -248,12 +250,13 @@ def score_simple_concours(X,y,clf):
 
         clf.fit(X_train, y_train)
         y_pred=clf.predict(X_test)
-        score=calcul_metric_concours(y_test,y_pred)
+        score=calcul_metric_concours(y_test, y_pred)
         list_score.append(score)
 
     return numpy.mean(list_score)
 
-def calcul_metric_concours(y_real,y_pred):
+
+def calcul_metric_concours(y_real, y_pred):
     """
     Calcul le score d'évaluation utilisé pour la compétition
     :param y_real:
@@ -261,20 +264,22 @@ def calcul_metric_concours(y_real,y_pred):
     :return:
     """
     import math
-    def transform_y(y,i):
-        if y==i:
+    def transform_y(y, i):
+        if y == i:
             return 1
+
         else:
             return 0
-    vec_transform_y=numpy.vectorize(transform_y)
 
-    list_tp=[]
-    list_fp=[]
-    list_fn=[]
-    for i in range(1,4):
+    vec_transform_y = numpy.vectorize(transform_y)
 
-        y_pred_mod=vec_transform_y(y_pred,i)
-        y_real_mod=vec_transform_y(y_real,i)
+    list_tp = []
+    list_fp = []
+    list_fn = []
+
+    for i in range(1, 4):
+        y_pred_mod = vec_transform_y(y_pred, i)
+        y_real_mod = vec_transform_y(y_real, i)
 
 
         tn, fp, fn, tp = confusion_matrix(y_real_mod, y_pred_mod).ravel()
@@ -282,22 +287,24 @@ def calcul_metric_concours(y_real,y_pred):
         list_fp.append(fp)
         list_fn.append(fn)
 
-    sum_tp=numpy.sum(list_tp)
-    sum_fp=numpy.sum(list_fp)
-    sum_fn=numpy.sum(list_fn)
-    pu=sum_tp/(sum_tp+sum_fp)
-    ru=sum_tp/(sum_tp+sum_fn)
+    sum_tp = numpy.sum(list_tp)
+    sum_fp = numpy.sum(list_fp)
+    sum_fn = numpy.sum(list_fn)
+    pu = sum_tp / (sum_tp+sum_fp)
+    ru = sum_tp / (sum_tp+sum_fn)
 
-    if math.isnan(2/(1/pu+1/ru) ) :
+    if math.isnan(2 / (1/pu + 1/ru)):
         return 0
+
     else:
-        return 2/(1/pu+1/ru)
+        return 2 / (1/pu + 1/ru)
 
 
 ######################################## fonction d'apparence jolies ###################################################
-def plot_good_looking_confusion_matrix(y_real,y_pred):
+def plot_good_looking_confusion_matrix(y_real, y_pred):
+
     #Fonction trouvée sur le net
-    def plot_confusion_matrix(cm,target_names,title='Confusion matrix',cmap=None,normalize=True):
+    def plot_confusion_matrix(cm, target_names, title='Confusion matrix', cmap=None, normalize=True):
         """
         given a sklearn confusion matrix (cm), make a nice plot
 
@@ -375,8 +382,7 @@ def plot_good_looking_confusion_matrix(y_real,y_pred):
     plot_confusion_matrix(cm,["others", "happy", "sad", "angry"],normalize=False)
 
 
-
 if __name__ == '__main__':
-    y_pred=numpy.array([0,3,1,2,2,0])
-    y_real=numpy.array([1,3,1,2,2,0])
-    print(calcul_metric_concours(y_real,y_pred))
+    y_pred = numpy.array([0, 3, 1, 2, 2, 0])
+    y_real = numpy.array([1, 3, 1, 2, 2, 0])
+    print(calcul_metric_concours(y_real, y_pred))

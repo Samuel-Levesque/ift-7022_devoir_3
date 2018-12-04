@@ -1,22 +1,20 @@
 from Create_features import create_data_frame, add_presence_of_characters_feature, add_pourcentage_lettre_majuscule_feature, add_sentiment_features
-
 import re
 
-def analyse_corpus_labels(corpus,labels):
+
+def analyse_corpus_labels(corpus, labels):
     '''
     Fonction principal pour analyse.
     On ajoute des colones avec les fonctions de create features, puis on regarde les occurences avec les fonctions de statistiques
-
-
     :param corpus:
     :param labels:
     :return:
     '''
-    df=create_data_frame(corpus,labels)
+    df=create_data_frame(corpus, labels)
 
     ################################ Présence de caractère ###################################
-    print_nb_occurence_regex(df,"❤","Ind ❤","Total de ❤")
-    print_nb_occurence_regex(df, "💔", "Ind 💔", "Total de 💔")
+    print_nb_occurence_regex(df, "❤", "Ind ❤", "Total de ❤")
+    print_nb_occurence_regex(df, "💔", "Ind 💔", "Total de💔")
     print_nb_occurence_regex(df, "😍", "Ind 😍", "Total de 😍")
     print_nb_occurence_regex(df, "😞", "Ind 😞", "Total de 😞")
     print_nb_occurence_regex(df, "😂", "Ind 😂", "Total de 😂")
@@ -68,31 +66,23 @@ def analyse_corpus_labels(corpus,labels):
     print_nb_occurence_regex(df, "[!\?]{3,}", "Ind serie de ! ou ?", "Total de serie de ! ou?")
 
 
-
-
-
-
-
     ################################### Majuscules ######################################################
     add_pourcentage_lettre_majuscule_feature(df)
     print("\nMoyenne de pourcentage de lettres en majuscule parmi toutes les lettres")
-    moyenne_par_classe(df,"Pourcentage_maj")
+    moyenne_par_classe(df, "Pourcentage_maj")
 
     ################################### Sentiments ######################################################
     add_sentiment_features(df)
     print("\nMoyenne de score de sentiment")
-    moyenne_par_classe(df,"Sentiment")
+    moyenne_par_classe(df, "Sentiment")
     print("\nMoyenne de nombre de mots positifs")
     moyenne_par_classe(df, "Nombre_positive")
     print("\nMoyenne de nombre de mots négatifs")
     moyenne_par_classe(df, "Nombre_negative")
 
 
-
-
-
 #Fonction de statistiques
-def somme_par_classe(data_frame,nom):
+def somme_par_classe(data_frame, nom):
     '''
     À partir d'un nom de colone, calcul la somme par classe
     :param data_frame:
@@ -101,7 +91,8 @@ def somme_par_classe(data_frame,nom):
     '''
     print(data_frame.groupby(["Label"])[nom].sum())
 
-def moyenne_par_classe(data_frame,nom):
+
+def moyenne_par_classe(data_frame, nom):
     '''
     À partir d'un nom de colone, calcul la moyenne par classe
     :param data_frame:
@@ -110,8 +101,9 @@ def moyenne_par_classe(data_frame,nom):
     '''
     print(data_frame.groupby(["Label"])[nom].mean())
 
+
 #Fonction de print
-def print_nb_occurence_regex(df,reg_ex,nom_colone,titre_print):
+def print_nb_occurence_regex(df, reg_ex, nom_colone, titre_print):
     """
     Permet de print le nombre de texts qui contiennent la reg_ex, par classe
     :param df:
@@ -121,7 +113,7 @@ def print_nb_occurence_regex(df,reg_ex,nom_colone,titre_print):
     :return:
     """
     add_presence_of_characters_feature(df, reg_ex, nom_colone)
-    print("\n"+titre_print)
+    print("\n" + titre_print)
     somme_par_classe(df, nom_colone)
 
 
@@ -133,13 +125,13 @@ def analyse_custom_emojis(corpus):
     :return:
     """
     myre = re.compile(r"[^\w\s\d]{2,6}")
-    list_all_match=[]
+    list_all_match = []
 
     for text in corpus:
-        match=myre.findall(text)
+        match = myre.findall(text)
         list_all_match.extend(match)
 
-    list_sorted=sorted(list(set(list_all_match)))
+    list_sorted = sorted(list(set(list_all_match)))
 
     #Print plus agréable à lire
     for i in range(0,len(list_sorted),30):

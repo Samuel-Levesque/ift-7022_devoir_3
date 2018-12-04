@@ -9,11 +9,12 @@ import time
 
 #Fichiers maisons
 from Importation_et_traitement import creation_corpus_training_and_labels, creation_corpus_test
-from Analyse_corpus import analyse_corpus_labels,analyse_custom_emojis
+from Analyse_corpus import analyse_corpus_labels, analyse_custom_emojis
 
-from Pre_processing import transforme_corpus_emoji_to_characters,labels_to_y, y_to_labels
-from Model_testing import analyse_rapide_modeles,optimisation_hyper_parametres, \
-    create_model_from_dict_prameters,create_X_from_dict_parameters,calcul_metric_concours,plot_good_looking_confusion_matrix
+from Pre_processing import transforme_corpus_emoji_to_characters, labels_to_y, y_to_labels
+from Model_testing import analyse_rapide_modeles, optimisation_hyper_parametres, \
+    create_model_from_dict_prameters, create_X_from_dict_parameters, \
+    calcul_metric_concours, plot_good_looking_confusion_matrix
 
 
 ############################ Options de roulage de code ################################################################
