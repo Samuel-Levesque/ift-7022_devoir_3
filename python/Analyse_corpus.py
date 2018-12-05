@@ -1,5 +1,7 @@
 from Create_features import create_data_frame, add_presence_of_characters_feature, add_pourcentage_lettre_majuscule_feature, add_sentiment_features
 import re
+from scipy.stats import f_oneway
+
 
 
 def analyse_corpus_labels(corpus, labels):
@@ -10,7 +12,7 @@ def analyse_corpus_labels(corpus, labels):
     :param labels:
     :return:
     '''
-    df=create_data_frame(corpus, labels)
+    df = create_data_frame(corpus, labels)
 
     ################################ Présence de caractère ###################################
     print_nb_occurence_regex(df, "❤", "Ind ❤", "Total de ❤")
@@ -120,11 +122,11 @@ def print_nb_occurence_regex(df, reg_ex, nom_colone, titre_print):
 ############################ Autre fonction ################
 def analyse_custom_emojis(corpus):
     """
-    Fonction qui print tous les caractères spéciaux de longueur de 2 à 6
+    Fonction qui print tous les caractères spéciaux de longueur de 2 à 12
     :param corpus:
     :return:
     """
-    myre = re.compile(r"[^\w\s\d]{2,6}")
+    myre = re.compile(r"[^\w\s\d]{2, 12}")
     list_all_match = []
 
     for text in corpus:
@@ -137,7 +139,37 @@ def analyse_custom_emojis(corpus):
     for i in range(0,len(list_sorted),30):
         print(list_sorted[i:i+30])
 
+    return list_sorted
 
+
+
+
+
+#######################
+
+
+def analyse_anova_other_features(corpus, labels, list_of_custom_emojis):
+    boolean_masks = {}
+
+    df = create_data_frame(corpus, labels)
+
+    class_list = ["happy", "angry", "sad", "others"]
+    for cls in class_list:
+        boolean_masks[cls] = (labels == cls)
+
+    retained_emojis_scores = {}
+
+    for emoji in list_of_custom_emojis:
+        add_presence_of_characters_feature(df, emoji, emoji)
+        retained_emojis_scores[emoji] = f_oneway(df[emoji][boolean_masks["happy"]],
+                                                 df[emoji][boolean_masks["sad"]],
+                                                 df[emoji][boolean_masks["angry"]],
+                                                 df[emoji][boolean_masks["others"]])
+
+    for key, value in retained_emojis_scores:
+        print(key, value)
+
+    pass
 
 
 

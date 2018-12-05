@@ -100,6 +100,8 @@ def add_all_other_features(data_frame):
     add_presence_of_characters_feature(data_frame, "\?{3,}", "Ind serie de ?")
     add_presence_of_characters_feature(data_frame, "[!\?]{3,}", "Ind serie de ! ou ?")
 
+    add_pourcentage_lettre_majuscule_feature(data_frame)
+
 
 def add_presence_of_characters_feature(data_frame,reg_expression,col_name):
     """

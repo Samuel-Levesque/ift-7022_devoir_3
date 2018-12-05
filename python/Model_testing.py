@@ -105,7 +105,8 @@ def optimisation_hyper_parametres(corpus_train, y_train, bool_ajouter_autres_fea
                         score = score_simple_concours(X_train, y_train, clf)
                         dict_par={"clf name": "SVM",
                                   "score": score,
-                                  "Dict param clf": {"C":par_c,"Kernel":par_kernel},
+                                  "Dict param clf": {"C": par_c,
+                                                     "Kernel": par_kernel},
                                   "Nom compteur": nom_obj_compte,
                                   "Dict param compteur": {"n gram":n_gram,"freq min":min_freq}
                                   }
@@ -150,7 +151,7 @@ def optimisation_hyper_parametres(corpus_train, y_train, bool_ajouter_autres_fea
 
 
     #################################Dictionnaire du modèle avec le plus haut score#####################################
-    max_score=0
+    max_score = 0
     for i in range(0, len(list_tous_dict)):
         if list_tous_dict[i]["score"] > max_score:
             max_score = list_tous_dict[i]["score"]

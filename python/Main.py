@@ -9,7 +9,7 @@ import time
 
 #Fichiers maisons
 from Importation_et_traitement import creation_corpus_training_and_labels, creation_corpus_test
-from Analyse_corpus import analyse_corpus_labels, analyse_custom_emojis
+from Analyse_corpus import analyse_corpus_labels, analyse_custom_emojis, analyse_anova_other_features
 
 from Pre_processing import transforme_corpus_emoji_to_characters, labels_to_y, y_to_labels
 from Model_testing import analyse_rapide_modeles, optimisation_hyper_parametres, \
@@ -19,6 +19,7 @@ from Model_testing import analyse_rapide_modeles, optimisation_hyper_parametres,
 
 ############################ Options de roulage de code ################################################################
 bool_faire_analyse_donnees_preliminaire = True  # Environ 240 secondes
+bool_anova_other_features = True   ############ TODO
 bool_faire_analyse_rapide_modeles = False  # Environ 200 secondes
 bool_faire_longue_optimisation = False  # Environ 2h30
 bool_faire_test_meilleur_model = False  # Environ 240 secondes
@@ -31,14 +32,19 @@ if __name__ == '__main__':
 
     corpus,labels = creation_corpus_training_and_labels()
 
+    ##############################
+    if bool_anova_other_features:
+        corpus_mod = transforme_corpus_emoji_to_characters(corpus)
+        list_of_custom_emojis = analyse_custom_emojis(corpus_mod)
+        analyse_anova_other_features(corpus, labels, list_of_custom_emojis)
+    ##############################
+
     if bool_faire_analyse_donnees_preliminaire:
         # Analyse caractères spéciaux
         corpus_mod = transforme_corpus_emoji_to_characters(corpus)
         analyse_custom_emojis(corpus_mod)
 
-
         analyse_corpus_labels(corpus, labels)
-
 
     #transforme les émojis en texte
     if bool_ajouter_autres_features:
