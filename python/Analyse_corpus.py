@@ -126,7 +126,9 @@ def analyse_custom_emojis(corpus):
     :param corpus:
     :return:
     """
-    myre = re.compile(r"[^\w\s\d]{2, 12}")
+#    myre = re.compile(r"[^\w\s\d]{2,6}")
+    myre = re.compile(r"[!@#$%^&*(),.?:{}|<>_\/-]{2,}")
+
     list_all_match = []
 
     for text in corpus:
@@ -140,9 +142,6 @@ def analyse_custom_emojis(corpus):
         print(list_sorted[i:i+30])
 
     return list_sorted
-
-
-
 
 
 #######################

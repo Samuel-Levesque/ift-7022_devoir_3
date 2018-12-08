@@ -1,0 +1,133 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[french]{babel}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\numberwithin{equation}{section}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{moreverb}
+\usepackage{url}
+\usepackage{subcaption}
+\setlength\parindent{0pt}
+\usepackage{bbm}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage[table]{xcolor}
+\usepackage{wrapfig}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{breakcites}
+\usepackage[htt]{hyphenat}
+\usepackage{fancyvrb}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{listingsutf8}
+\usepackage{listings}
+\usepackage{color}
+
+\setlength{\parskip}{1em}
+\usepackage[margin=1in]{geometry}
+
+\lstset{inputencoding=utf8/latin1}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+	language=Python,
+	inputencoding=utf8/latin1,
+	aboveskip=3mm,
+	belowskip=3mm,
+	showstringspaces=false,
+	columns=flexible,
+	basicstyle={\small\ttfamily},
+	numbers=none,
+	numberstyle=\tiny\color{gray},
+	keywordstyle=\color{orange},
+	stringstyle=\color{dkgreen},
+	breaklines=true,
+	breakatwhitespace=true,
+	tabsize=3
+}
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=cyan,
+}
+
+\urlstyle{same}
+
+\begin{document}
+\input{titre}
+\newpage
+\tableofcontents
+\newpage
+
+\section{Introduction}
+\input{Introduction}
+
+
+\section{Analyse préliminaire des données}
+\subsection{Analyse des \emph{emojis} et des binettes}
+\input{analyse_emojis}
+
+\subsection{Choix des variables à ajouter}
+\input{choix_des_variables}
+
+
+\section{Procédure et méthodologie}
+\input{procedure_methodologie}
+
+\subsection{Corpus et objets de compte}
+\input{corpus_compte}
+
+\subsection{Modèles de classification}
+\input{modeles_classification}
+
+\subsection{Optimisation de paramètres}
+\input{optimisation_parametres}
+
+\subsection{Test du modèle}
+\input{test_modele}
+
+
+\section{Résultats et conclusions}
+\subsection{Simulation de prédictions}
+\input{simulation_predictions}
+
+\subsection{Prédictions sur le jeu de test}
+\input{predictions_jeu_test}
+
+\section{Améliorations et retrospective sur le projet réalisé}
+\subsection{Améliorations possibles}
+\input{ameliorations_possibles}
+
+\subsection{Apprentissage}
+\input{apprentissage}
+
+
+\section{Annexe}
+\subsection{Liste de scores d'optimisation}
+\input{liste_score_optim}
+
+\end{document}
+

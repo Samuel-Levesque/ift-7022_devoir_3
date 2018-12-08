@@ -1,0 +1,34 @@
+4 modèles de classification seront testés : SVM, K-PPV, Régression Logistique et MLP. Pour débuter, on peut tester ces modèles avec des paramètres déterminés de façon arbitraire. Pour évaluer le score de performance, on peut utiliser la métrique qui sert à l'évaluation du concours:
+
+\includegraphics[width=\linewidth,height=10cm,keepaspectratio]{images/metric_concour}
+
+Cette valeur basée sur le nombre de vrais positifs, de faux négatifs et de faux positifs de chaque classe sera calculée 3 fois avec une validation 3-plis sur nos données d'entraînement.
+\begin{equation}
+F1_{u} =\frac{2}{\frac{1}{P_{u}}+\frac{1}{R_{u}}}
+\end{equation}
+
+On peut tester les modèles suivants avec nos objets de compte 1 gram avec occurrence minimale de 40:
+\begin{description}
+\item \textbf{SVM}(Support Vector Machine): avec paramètres par défaut.
+\item \textbf{KPPV} (K plus proche voisins): avec 5 voisins.
+\item \textbf{Régression Logistique}: avec paramètres par défaut. (Un contre tous pour le cas multivarié)
+\item \textbf{MLP} (Multi Layer Perceptron): avec 2 couches cachées de 100 neurones chaque.
+\end{description}
+
+
+On obtient:
+
+\begin{figure}[h!] %h: place figure here if possible, t: top, b:bottom, !:over-ride default placement
+	\begin{minipage}[b]{0.45\textwidth}
+		\includegraphics[width=\textwidth,height=11cm]{images/analyse_rapide_sans_features}	
+		\caption*{Sans ajout d'autres features}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[b]{0.45\textwidth}
+		\includegraphics[width=\textwidth,height=11cm]{images/analyse_rapide_avec_features}
+		\caption*{Avec ajout d'autres features}
+	\end{minipage}
+\end{figure}
+\clearpage
+
+On remarque que peu importe le modèle, l'ajout d'autres features que celles de comptes augmente le score du modèle. Les 3 objets de compte semblent avoir des scores similaire d'un modèle à l'autre, on ne peut pas facilement en distinguer un qui sort du lot. Pour ce qui est des modèles de classification, le modèle de régression logistique semble mieux performer que les autres. Cela est probablement dû au fait que les autres modèles ont plus de paramètres à optimiser pour arriver à de bons résultats contrairement à la régression logistique qui en a peu (voir pas).

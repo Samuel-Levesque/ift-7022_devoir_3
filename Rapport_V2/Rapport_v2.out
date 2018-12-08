@@ -1,0 +1,17 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Analyse pr\351liminaire des donn\351es}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Analyse des emojis et des binettes}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Choix des variables \340 ajouter}{section.2}% 4
+\BOOKMARK [1][-]{section.3}{Proc\351dure et m\351thodologie}{}% 5
+\BOOKMARK [2][-]{subsection.3.1}{Corpus et objets de compte}{section.3}% 6
+\BOOKMARK [2][-]{subsection.3.2}{Mod\350les de classification}{section.3}% 7
+\BOOKMARK [2][-]{subsection.3.3}{Optimisation de param\350tres}{section.3}% 8
+\BOOKMARK [2][-]{subsection.3.4}{Test du mod\350le}{section.3}% 9
+\BOOKMARK [1][-]{section.4}{R\351sultats et conclusions}{}% 10
+\BOOKMARK [2][-]{subsection.4.1}{Simulation de pr\351dictions}{section.4}% 11
+\BOOKMARK [2][-]{subsection.4.2}{Pr\351dictions sur le jeu de test}{section.4}% 12
+\BOOKMARK [1][-]{section.5}{Am\351liorations et retrospective sur le projet r\351alis\351}{}% 13
+\BOOKMARK [2][-]{subsection.5.1}{Am\351liorations possibles}{section.5}% 14
+\BOOKMARK [2][-]{subsection.5.2}{Apprentissage}{section.5}% 15
+\BOOKMARK [1][-]{section.6}{Annexe}{}% 16
+\BOOKMARK [2][-]{subsection.6.1}{Liste de scores d'optimisation}{section.6}% 17
