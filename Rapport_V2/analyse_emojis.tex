@@ -1,22 +1,22 @@
 En regardant rapidement les données fournies dans le fichier \emph{train.txt}, on peut voir que les échanges de textos sont très courts. Également, il y a beaucoup d'\emph{emojis} et de binettes créés à partir de caractères spéciaux (ex: :), :D, :(, :-)).
 
-On peut regarder le nombre de textes avec la présence d'au moins un emoji particulier selon chaque classe pour voir si ceux-ci semblent être beaucoup plus présents dans une classe ou une autre. Les résultats obtenus pour quelques emojis testés se trouvent dans la figure ....
+On peut regarder le nombre de textes avec la présence d'au moins un emoji particulier selon chaque classe pour voir si ceux-ci semblent être beaucoup plus présents dans une classe ou une autre. Les résultats obtenus pour quelques emojis testés se trouvent dans la table \ref{table:emojis}
 
 % Please add the following required packages to your document preamble:
 % \usepackage{booktabs}
 \begin{table}[]
 	\centering
-	\caption{My caption}
-	\label{my-label}
+	\caption{Comptes préliminaires d'emojis}
+	\label{table:emojis}
 	\begin{tabular}{@{}lllll@{}}
 		\toprule
 		Emoji testé & Angry & Happy & Sad & Others \\ \midrule
-		❤           & 8     & 31    & 13  & 41     \\
-		💔          & 2     & 0     & 64  & 3      \\
-		😍          & 10    & 88    & 10  & 92     \\
-		😞          & 15    & 1     & 282 & 15     \\
-		😂          & 59    & 989   & 49  & 197    \\
-		😡          & 156   & 6     & 18  & 10     \\ \bottomrule
+		\includegraphics[height=0.5cm]{images/heart}          & 8     & 31    & 13  & 41     \\
+		\includegraphics[height=0.3cm]{images/broken_heart}          & 2     & 0     & 64  & 3      \\
+		\includegraphics[height=0.3cm]{images/heart_eyes}          & 10    & 88    & 10  & 92     \\
+		\includegraphics[height=0.3cm]{images/sad}          & 15    & 1     & 282 & 15     \\
+		\includegraphics[height=0.3cm]{images/laughter}          & 59    & 989   & 49  & 197    \\
+		\includegraphics[height=0.3cm]{images/angry}          & 156   & 6     & 18  & 10     \\ \bottomrule
 	\end{tabular}
 \end{table}
 
@@ -24,14 +24,14 @@ On peut regarder le nombre de textes avec la présence d'au moins un emoji parti
 
 À première vue, les emojis semblent avoir un impact important. Par exemple, le coeur brisé et le bonhomme triste sont souvent utilisés dans des échanges de textos tristes alors que celui qui fait un sourire est utilisé pour les échanges neutres ou joyeux. Il semble donc pertinent de convertir tous les emojis en texte pour les traiter avec un objet de compte de mots.
 
-On peut également tenter de repérer les binettes créés à partir de caractères spéciaux. Pour parvenir à les identifier, on peut utiliser une expression régulière qui identifie les séries de 2 à 6 caractères spéciaux:
+On peut également tenter de repérer les binettes créés à partir de caractères spéciaux. Pour parvenir à les identifier, on peut utiliser une expression régulière qui identifie les séries de 2 à 6 caractères spéciaux. On voit ici ladite expression régulière avec la liste des chaînes de caractères ainsi extraites.
 \begin{verbatim}
 reg ex : [^\w\s\d]{2,6}
 \end{verbatim}
 
 \includegraphics[width=\linewidth,height=7cm]{images/analyse_list_car_speciaux}
 
-À partir de cela, on peut tenter d'identifier toutes les chaînes qui semblent intéressantes de façon manuelle. Voici une liste des plus intéressantes: 
+À partir de cela, on peut tenter d'identifier toutes les chaînes qui semblent intéressantes de façon manuelle. Pour voir rapidement si ces chaînes de caractères pourraient être discriminantes, on fait une analyse des comptes selon nos quatre classes. La table .... présente les résultats les plus intéressants.
 
 \begin{figure}[h!] %h: place figure here if possible, t: top, b:bottom, !:over-ride default placement
 	\begin{minipage}[b]{0.3\textwidth}
