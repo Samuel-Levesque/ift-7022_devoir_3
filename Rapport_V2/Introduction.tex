@@ -2,10 +2,10 @@ Ce projet porte sur la seconde suggestion de travaux proposée sur le site de co
 
 Le code est constitué de plusieurs fichiers. Le plus important est celui nommé \emph{Main}. C'est le seul que l'on ait besoin de rouler. Différentes options d'exécution sont offertes:
 
-\includegraphics[width=\linewidth,height=6cm]{images/list_bool}
+%\includegraphics[width=\linewidth,height=6cm]{images/list_bool}
 
-\begin{lstlisting}
-############################ Options de roulage de code ################################################################
+\begin{minted}[breaklines]{python}
+############################ Options d'exécution du code ######################
 bool_faire_analyse_donnees_preliminaire = True  # Environ 240 secondes
 bool_faire_analyse_rapide_modeles = True  # Environ 200 secondes
 bool_faire_longue_optimisation = True  # Environ 2h30
@@ -13,7 +13,9 @@ bool_faire_test_meilleur_model = True  # Environ 240 secondes
 bool_faire_prediction = True  # Environ 260 secondes
 bool_print_tous_models_optimisation = True  # Rapide
 bool_ajouter_autres_features = True  # Augmente considérablement les délais .55 secondes passe à 240 secondes
-\end{lstlisting}
+\end{minted}
+
+%\lstinputlisting[caption=Options d'exécution du code, style=customc]{exec.c}
 
 \verb|bool_faire_analyse_donnees_preliminaire = True| permet de faire l'analyse préliminaire des données présentée dans la section \nameref{sec:analyse_prelim}. 
 

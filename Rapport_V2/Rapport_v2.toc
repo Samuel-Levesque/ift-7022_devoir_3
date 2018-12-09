@@ -1,7 +1,7 @@
 \select@language {french}
 \contentsline {section}{\numberline {1}Introduction}{2}{section.1}
-\contentsline {section}{\numberline {2}Analyse pr\IeC {\'e}liminaire des donn\IeC {\'e}es}{3}{section.2}
-\contentsline {subsection}{\numberline {2.1}Analyse des \emph {emojis} et des binettes}{3}{subsection.2.1}
+\contentsline {section}{\numberline {2}Analyse pr\IeC {\'e}liminaire des donn\IeC {\'e}es}{2}{section.2}
+\contentsline {subsection}{\numberline {2.1}Analyse des \emph {emojis} et des binettes}{2}{subsection.2.1}
 \contentsline {subsection}{\numberline {2.2}Choix des variables \IeC {\`a} ajouter}{6}{subsection.2.2}
 \contentsline {section}{\numberline {3}Proc\IeC {\'e}dure et m\IeC {\'e}thodologie}{7}{section.3}
 \contentsline {subsection}{\numberline {3.1}Corpus et objets de compte}{7}{subsection.3.1}
