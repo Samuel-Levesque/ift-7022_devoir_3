@@ -31,29 +31,72 @@ reg ex : [^\w\s\d]{2,6}
 
 \includegraphics[width=\linewidth,height=7cm]{images/analyse_list_car_speciaux}
 
-À partir de cela, on peut tenter d'identifier toutes les chaînes qui semblent intéressantes de façon manuelle. Pour voir rapidement si ces chaînes de caractères pourraient être discriminantes, on fait une analyse des comptes selon nos quatre classes. La table .... présente les résultats les plus intéressants.
+À partir de cela, on peut tenter d'identifier toutes les chaînes qui semblent intéressantes de façon manuelle. Pour voir rapidement si ces chaînes de caractères pourraient être discriminantes, on fait une analyse des comptes selon nos quatre classes. La table \ref{table:binettes} présente les résultats les plus intéressants.
 
-\begin{figure}[h!] %h: place figure here if possible, t: top, b:bottom, !:over-ride default placement
-	\begin{minipage}[b]{0.3\textwidth}
-		\includegraphics[width=\textwidth,height=14cm]{images/analyse_emojis_car_pos}
-	\end{minipage}
-	\hfill
-	\begin{minipage}[b]{0.3\textwidth}
-		\includegraphics[width=\textwidth,height=14cm]{images/analyse_emojis_car_neg}
-	\end{minipage}
-	\hfill
-	\begin{minipage}[b]{0.3\textwidth}
-		\includegraphics[width=\textwidth,height=14cm]{images/analyse_car_ponctuation}
-	\end{minipage}
-\end{figure}
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+% \usepackage{longtable}
+% Note: It may be necessary to compile the document several times to get a multi-page table to line up properly
+\begin{longtable}[c]{@{}lllll@{}}
+	\caption{Comptes des chaînes de caractères spéciaux}
+	\label{table:binettes}\\
+	\toprule
+	Chaîne de caractères & Angry & Happy & Sad & Others \\* \midrule
+	\endhead
+	%
+	\bottomrule
+	\endfoot
+	%
+	\endlastfoot
+	%
+	:)                   & 140   & 254   & 191 & 610    \\
+	:D                   & 43    & 104   & 44  & 166    \\
+	;)                   & 34    & 66    & 28  & 121    \\
+	=)                   & 1     & 4     & 0   & 10     \\
+	:-)                  & 22    & 50    & 27  & 74     \\
+	;-)                  & 2     & 13    & 6   & 14     \\
+	:(                   & 71    & 18    & 348 & 101    \\
+	;(                   & 3     & 0     & 24  & 3      \\
+	:'(                  & 7     & 3     & 29  & 6      \\
+	:/                   & 40    & 13    & 33  & 49     \\
+	:-/                  & 6     & 2     & 1   & 4      \\
+	:-(                  & 5     & 0     & 21  & 6      \\
+	Série de .           & 469   & 410   & 459 & 1085   \\
+	Série de !           & 90    & 63    & 68  & 162    \\
+	Série de ?           & 54    & 22    & 64  & 180    \\
+	Série de ! ou ?      & 157   & 89    & 148 & 359    \\* \bottomrule
+\end{longtable}
 
 On peut voir que les smileys qui ont une apparence plus joyeuse (ex: :), :D) sont souvent utilisés dans des textos joyeux ou autres. Pour ce qui est de ceux avec une apparence triste, on remarque qu'ils sont souvent dans les textos tristes et parfois ceux fâchés.
 
 On peut également analyser la ponctuation, plus particulièrement une série de 3 signes de ponctuation et plus (ex: ..., !!!!!, ????, ?!?!??!). Les séries de points ne semblent pas particulièrement être plus présent dans une classe particulière. Pour ce qui est des séries de ! ou ?, on remarque qu'elles sont plus présentes dans les textos fâchés et triste.
 
-On peut également s'attarder au pourcentage de lettres en majuscule dans un texto, ainsi que le score de sentiment, le nombre de mots positifs et négatifs. Voici la liste du nombre moyen de ces valeurs pour chaque classe:
+On peut également s'attarder au pourcentage de lettres en majuscule dans un texto, ainsi que le score de sentiment, le nombre de mots positifs et négatifs. Les résultats obtenus pour chacun de ces attributs sont présentés dans la table \ref{table:pourcentages}.
 
-\includegraphics[width=\linewidth,height=15cm,keepaspectratio]{images/analyse_maj_sentiment}
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+% \usepackage{longtable}
+% Note: It may be necessary to compile the document several times to get a multi-page table to line up properly
+\begin{longtable}[c]{@{}lllll@{}}
+	\caption{Analyse des attributs de sentiments}
+	\label{table:pourcentages}\\
+	\toprule
+	Attribut                           & Angry     & Happy    & Sad       & Others   \\* \midrule
+	\endhead
+	%
+	\bottomrule
+	\endfoot
+	%
+	\endlastfoot
+	%
+	Moyenne de lettres en majuscule    & 0,078271  & 0,079926 & 0,076783  & 0,082716 \\
+	Moyenne de score de sentiment      & -0,272566 & 0,417544 & -0,201983 & 0,077257 \\
+	Moyenne de nombre de mots positifs & 0,594987  & 1,181475 & 0,786198  & 0,698689 \\
+	Moyenne de nombre de mots négatifs & 1,054668  & 0,538770 & 1,068094  & 0,523013 \\* \bottomrule
+\end{longtable}
+
+
+%\includegraphics[width=\linewidth,height=15cm,keepaspectratio]{images/analyse_maj_sentiment}
 
 Le score de sentiment utilisé est calculé avec \emph{Senti Word Net} en sommant les valeurs de sentiment attribuées à chaque mot de l'échange de textos. Le nombre de mots positifs/négatifs est calculé en comptant le nombre de mots avec des valeurs de sentiment supérieur/inférieur à 0.
 
