@@ -15,20 +15,37 @@ On peut tester les modèles suivants avec nos objets de compte 1 gram avec occur
 \item \textbf{MLP} (Multi Layer Perceptron): avec 2 couches cachées de 100 neurones chaque.
 \end{description}
 
+Les résultats ainsi obtenus sont présentés dans la figure \ref{table:modeles_classification}.
 
-On obtient:
-
-\begin{figure}[h!] %h: place figure here if possible, t: top, b:bottom, !:over-ride default placement
-	\begin{minipage}[b]{0.45\textwidth}
-		\includegraphics[width=\textwidth,height=11cm]{images/analyse_rapide_sans_features}	
-		\caption*{Sans ajout d'autres features}
-	\end{minipage}
-	\hfill
-	\begin{minipage}[b]{0.45\textwidth}
-		\includegraphics[width=\textwidth,height=11cm]{images/analyse_rapide_avec_features}
-		\caption*{Avec ajout d'autres features}
-	\end{minipage}
-\end{figure}
-\clearpage
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+% \usepackage{longtable}
+% Note: It may be necessary to compile the document several times to get a multi-page table to line up properly
+\begin{longtable}[c]{cccc}
+	\caption{Scores F1 de nos modèles de classification}
+	\label{table:modeles_classification}\\
+	\hline
+	&                       & \multicolumn{2}{c}{\textbf{Score F1}}                             \\ 
+	\endhead
+	%
+	\cline{2-4}
+	\endfoot
+	%
+	\endlastfoot
+	%
+	\textbf{Vectorisation des mots}     & \textbf{Modèle}       & \textbf{Sans ajout de features} & \textbf{Avec ajout de features} \\ \hline
+	\multirow{4}{*}{Word Count}         & SVM & 0,3457 & 0,3710 \\ 
+	& k-PPV                 & 0,3836 & 0,4456 \\
+	& Régression logistique & 0,5958 & 0,6610 \\
+	& MLP                   & 0,5440 & 0,6114 \\ \hline
+	\multirow{4}{*}{Word Count binaire} & SVM & 0,3223 & 0,3284 \\ 
+	& k-PPV                 & 0,3727 & 0,4040 \\
+	& Régression logistique & 0,6046 & 0,6797 \\
+	& MLP                   & 0,5428 & 0,6141 \\ \hline
+	\multirow{4}{*}{TF-IDF}             & SVM & 0,0229 & 0,0339 \\
+	& k-PPV                 & 0,4440 & 0,4482 \\
+	& Régression logistique & 0,5833 & 0,6552 \\
+	& MLP                   & 0,5443 & 0,6115 \\ \hline
+\end{longtable}
 
 On remarque que peu importe le modèle, l'ajout d'autres features que celles de comptes augmente le score du modèle. Les 3 objets de compte semblent avoir des scores similaire d'un modèle à l'autre, on ne peut pas facilement en distinguer un qui sort du lot. Pour ce qui est des modèles de classification, le modèle de régression logistique semble mieux performer que les autres. Cela est probablement dû au fait que les autres modèles ont plus de paramètres à optimiser pour arriver à de bons résultats contrairement à la régression logistique qui en a peu (voir pas).
