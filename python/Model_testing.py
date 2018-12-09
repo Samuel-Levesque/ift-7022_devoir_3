@@ -60,7 +60,7 @@ def optimisation_hyper_parametres(corpus_train, y_train, bool_ajouter_autres_fea
     """
     ############################## Liste de paramètres à regarder ######################################################
     #List de test pour objet de compte
-    list_n_gram = [1]
+    list_n_gram = [1, 2, 3]
     list_min_freq = [2,5,10]
     list_nom_objet_compte = ["Word counts", "Binary Word counts", "TfiDf"]
 

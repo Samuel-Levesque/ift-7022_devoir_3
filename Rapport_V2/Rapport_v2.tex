@@ -39,6 +39,7 @@
 \usepackage{listingsutf8}
 \usepackage{listings}
 \usepackage{color}
+\usepackage{nameref}
 
 \setlength{\parskip}{1em}
 \usepackage[margin=1in]{geometry}
@@ -86,47 +87,48 @@
 \input{Introduction}
 
 
-\section{Analyse préliminaire des données}
-\subsection{Analyse des \emph{emojis} et des binettes}
+\section{Analyse préliminaire des données} \label{sec:analyse_prelim}
+\subsection{Analyse des \emph{emojis} et des binettes} \label{subsec:emojis}
 \input{analyse_emojis}
 
-\subsection{Choix des variables à ajouter}
+\subsection{Choix des variables à ajouter} \label{subsec:variables}
 \input{choix_des_variables}
 
 
-\section{Procédure et méthodologie}
+\section{Procédure et méthodologie} \label{sec:methodologie}
 \input{procedure_methodologie}
 
-\subsection{Corpus et objets de compte}
+\subsection{Corpus et objets de compte} \label{subsec:corpus}
 \input{corpus_compte}
 
-\subsection{Modèles de classification}
+\subsection{Modèles de classification} \label{subsec:modeles}
 \input{modeles_classification}
 
-\subsection{Optimisation de paramètres}
+\subsection{Optimisation de paramètres} \label{subsec:optimisation}
 \input{optimisation_parametres}
 
-\subsection{Test du modèle}
+\subsection{Test du modèle} \label{subsec:test}
 \input{test_modele}
 
 
-\section{Résultats et conclusions}
-\subsection{Simulation de prédictions}
+\section{Résultats et conclusions} \label{sec:resultats}
+\subsection{Simulation de prédictions} \label{subsec:simulation}
 \input{simulation_predictions}
 
-\subsection{Prédictions sur le jeu de test}
+\subsection{Prédictions sur le jeu de test} \label{subsec:predictions}
 \input{predictions_jeu_test}
 
-\section{Améliorations et retrospective sur le projet réalisé}
-\subsection{Améliorations possibles}
+
+\section{Améliorations et retrospective sur le projet réalisé} \label{sec:ameliorations}
+\subsection{Améliorations possibles} \label{subsec:ameliorations}
 \input{ameliorations_possibles}
 
-\subsection{Apprentissage}
+\subsection{Apprentissage} \label{subsec:apprentissage}
 \input{apprentissage}
 
 
-\section{Annexe}
-\subsection{Liste de scores d'optimisation}
+\section{Annexe} \label{sec:annexe}
+\subsection{Liste de scores d'optimisation} \label{subsec:scores}
 \input{liste_score_optim}
 
 \end{document}

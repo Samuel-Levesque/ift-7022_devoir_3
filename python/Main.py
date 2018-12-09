@@ -18,15 +18,14 @@ from Model_testing import analyse_rapide_modeles, optimisation_hyper_parametres,
 
 
 ############################ Options de roulage de code ################################################################
-bool_faire_analyse_donnees_preliminaire = False  # Environ 240 secondes
+bool_faire_analyse_donnees_preliminaire = True  # Environ 240 secondes
 bool_anova_other_features = True   ############ TODO
-bool_faire_analyse_rapide_modeles = False  # Environ 200 secondes
-bool_faire_longue_optimisation = False  # Environ 2h30
-bool_faire_test_meilleur_model = False  # Environ 240 secondes
-bool_faire_prediction = False  # Environ 260 secondes
-bool_print_tous_models_optimisation = False  # Rapide
-
-bool_ajouter_autres_features = False  # Augmente considérablement les délais 0.55 secondes passe à 240 secondes
+bool_faire_analyse_rapide_modeles = True  # Environ 200 secondes
+bool_faire_longue_optimisation = True  # Environ 2h30
+bool_faire_test_meilleur_model = True  # Environ 240 secondes
+bool_faire_prediction = True  # Environ 260 secondes
+bool_print_tous_models_optimisation = True  # Rapide
+bool_ajouter_autres_features = True  # Augmente considérablement les délais 0.55 secondes passe à 240 secondes
 
 if __name__ == '__main__':
 
