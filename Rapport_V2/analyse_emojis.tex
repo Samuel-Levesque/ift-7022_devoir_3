@@ -24,7 +24,7 @@ On peut regarder le nombre de textes avec la présence d'au moins un emoji parti
 
 À première vue, les emojis semblent avoir un impact important. Par exemple, le coeur brisé et le bonhomme triste sont souvent utilisés dans des échanges de textos tristes alors que celui qui fait un sourire est utilisé pour les échanges neutres ou joyeux. Il semble donc pertinent de convertir tous les emojis en texte pour les traiter avec un objet de compte de mots.
 
-On peut également tenter de repérer les binettes créés à partir de caractères spéciaux. Pour parvenir à les identifier, on peut utiliser une expression régulière qui identifie les séries de 2 à 6 caractères spéciaux. On voit ici ladite expression régulière avec la liste des chaînes de caractères ainsi extraites.
+On peut également tenter de repérer les binettes créées à partir de caractères spéciaux. Pour parvenir à les identifier, on utilise une expression régulière qui identifie les séries de 2 à 6 caractères spéciaux. On voit ici ladite expression régulière avec la liste des chaînes de caractères ainsi extraites.
 \begin{verbatim}
 reg ex : [^\w\s\d]{2,6}
 \end{verbatim}
@@ -69,7 +69,7 @@ reg ex : [^\w\s\d]{2,6}
 
 On peut voir que les smileys qui ont une apparence plus joyeuse (ex: :), :D) sont souvent utilisés dans des textos joyeux ou autres. Pour ce qui est de ceux avec une apparence triste, on remarque qu'ils sont souvent dans les textos tristes et parfois ceux fâchés.
 
-On peut également analyser la ponctuation, plus particulièrement une série de 3 signes de ponctuation et plus (ex: ..., !!!!!, ????, ?!?!??!). Les séries de points ne semblent pas particulièrement être plus présent dans une classe particulière. Pour ce qui est des séries de ! ou ?, on remarque qu'elles sont plus présentes dans les textos fâchés et triste.
+On peut également analyser la ponctuation, plus particulièrement les séries de 3 signes de ponctuation et plus (ex: ..., !!!!!, ????, ?!?!??!). Les séries de points ne semblent pas se trouver en plus grande fréquence dans une classe en particulier. Pour ce qui est des séries de ! ou ?, on remarque qu'elles sont plus présentes dans les textos fâchés et triste.
 
 On peut également s'attarder au pourcentage de lettres en majuscule dans un texto, ainsi que le score de sentiment, le nombre de mots positifs et négatifs. Les résultats obtenus pour chacun de ces attributs sont présentés dans la table \ref{table:pourcentages}.
 
@@ -100,6 +100,6 @@ On peut également s'attarder au pourcentage de lettres en majuscule dans un tex
 
 Le score de sentiment utilisé est calculé avec \emph{Senti Word Net} en sommant les valeurs de sentiment attribuées à chaque mot de l'échange de textos. Le nombre de mots positifs/négatifs est calculé en comptant le nombre de mots avec des valeurs de sentiment supérieur/inférieur à 0.
 
-On constate que le pourcentage de lettre majuscule dans les textos est similaire pour toutes les classes, on aurait pu penser qu'il aurait été plus haut pour les textos fâchés. 
+On constate que le pourcentage de lettre majuscules dans les textos est similaire pour toutes les classes. On aurait pu penser que cette mesure aurait été plus élevée pour les textos fâchés, mais ça ne semble pas être le cas. 
 
-Les 3 variables associées aux sentiments semblent beaucoup parler. En effet, les catégories triste et fâché ont des connotations beaucoup plus négatives, alors que la classe joyeuse a beaucoup plus de mots positifs. Cela n'est pas très surprenant.
+Les 3 variables associées aux sentiments semblent beaucoup parler. En effet, les catégories triste et fâché ont des connotations beaucoup plus négatives, alors que la classe joyeuse a beaucoup plus de mots positifs. La classe \emph{Others} quand à elle a un score presque égal à 0. Ces résultats confirment notre intuition quant à l'utilisation de cet attribut.

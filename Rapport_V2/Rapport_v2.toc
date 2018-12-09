@@ -7,12 +7,12 @@
 \contentsline {subsection}{\numberline {3.1}Corpus et objets de compte}{6}{subsection.3.1}
 \contentsline {subsection}{\numberline {3.2}Mod\IeC {\`e}les de classification}{7}{subsection.3.2}
 \contentsline {subsection}{\numberline {3.3}Optimisation de param\IeC {\`e}tres}{8}{subsection.3.3}
-\contentsline {subsection}{\numberline {3.4}Test du mod\IeC {\`e}le}{8}{subsection.3.4}
+\contentsline {subsection}{\numberline {3.4}Test du mod\IeC {\`e}le}{9}{subsection.3.4}
 \contentsline {section}{\numberline {4}R\IeC {\'e}sultats et conclusions}{9}{section.4}
 \contentsline {subsection}{\numberline {4.1}Simulation de pr\IeC {\'e}dictions}{9}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}Pr\IeC {\'e}dictions sur le jeu de test}{11}{subsection.4.2}
-\contentsline {section}{\numberline {5}Am\IeC {\'e}liorations et retrospective sur le projet r\IeC {\'e}alis\IeC {\'e}}{11}{section.5}
-\contentsline {subsection}{\numberline {5.1}Am\IeC {\'e}liorations possibles}{11}{subsection.5.1}
-\contentsline {subsection}{\numberline {5.2}Apprentissage}{12}{subsection.5.2}
-\contentsline {section}{\numberline {6}Annexe}{12}{section.6}
-\contentsline {subsection}{\numberline {6.1}Liste de scores d'optimisation}{12}{subsection.6.1}
+\contentsline {subsection}{\numberline {4.2}Pr\IeC {\'e}dictions sur le jeu de test}{12}{subsection.4.2}
+\contentsline {section}{\numberline {5}Am\IeC {\'e}liorations et retrospective sur le projet r\IeC {\'e}alis\IeC {\'e}}{13}{section.5}
+\contentsline {subsection}{\numberline {5.1}Am\IeC {\'e}liorations possibles}{13}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Apprentissage}{13}{subsection.5.2}
+\contentsline {section}{\numberline {6}Annexe}{14}{section.6}
+\contentsline {subsection}{\numberline {6.1}Liste de scores d'optimisation}{14}{subsection.6.1}

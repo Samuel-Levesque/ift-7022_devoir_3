@@ -1,8 +1,8 @@
-Ce projet porte sur la seconde suggestion de travaux proposée sur le site de cours: \emph{ Classification de texte et analyse de sentiments dans les conversations}. Le but consiste à prédire le sentiment (happy, angry, sad) dégagé dans un échange de 3 textos. Un corpus d'entraînement est fourni pour réaliser la tâche. 
+Ce projet porte sur la seconde suggestion de travail proposée sur le site de cours: \emph{ Classification de texte et analyse de sentiments dans les conversations}. 
+Le but consiste à prédire le sentiment (happy, angry, sad ou others) dégagé dans un échange de 3 textos. Un corpus d'entraînement est fourni pour réaliser la tâche. 
 
-Le code est constitué de plusieurs fichiers. Le plus important est celui nommé \emph{Main}. C'est le seul que l'on ait besoin de rouler. Différentes options d'exécution sont offertes:
-
-%\includegraphics[width=\linewidth,height=6cm]{images/list_bool}
+Le code développé pour résoudre cette problématique est constitué de plusieurs fichiers. 
+Le plus important est celui nommé \emph{Main.py} dans le dossier \emph{python}. C'est le seul que l'on ait besoin de rouler. Différentes options d'exécution sont offertes:
 
 \begin{minted}[breaklines]{python}
 ############################ Options d'exécution du code ######################
@@ -14,8 +14,6 @@ bool_faire_prediction = True  # Environ 260 secondes
 bool_print_tous_models_optimisation = True  # Rapide
 bool_ajouter_autres_features = True  # Augmente considérablement les délais .55 secondes passe à 240 secondes
 \end{minted}
-
-%\lstinputlisting[caption=Options d'exécution du code, style=customc]{exec.c}
 
 \verb|bool_faire_analyse_donnees_preliminaire = True| permet de faire l'analyse préliminaire des données présentée dans la section \nameref{sec:analyse_prelim}. 
 

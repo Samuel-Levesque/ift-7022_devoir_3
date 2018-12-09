@@ -1,3 +1,8 @@
-Pour parvenir à réaliser la tâche, on utilisera un objet de compte fourni dans la librairie \emph{sklearn} avec d'autres variables décrites dans la section \emph{Analyse préliminaire des données}. Ensuite encore avec \emph{sklearn}, nous utiliserons un modèle de classification pour prédire l'émotion dégagée dans les échanges de textos.
+Pour parvenir à réaliser la tâche, on utilisera un objet de compte fourni dans la librairie \emph{sklearn} et d'autres variables décrites dans la section \nameref{sec:analyse_prelim}. 
+Ensuite encore avec \emph{sklearn}, nous utiliserons un modèle de classification pour prédire l'émotion dégagée dans les échanges de textos.
 
-Pour simuler un test sur nos données, le corpus d'entraînement fourni dans \emph{train.txt} sera directement séparé en corpus d'entraînement (80\%) et en corpus de test(20\%)  pour pouvoir évaluer la performance de notre modèle. Ainsi, tous les tests seront réalisés avec 80\% des données. À la fin complètement, le meilleur modèle sera entraîné avec les données d'entraînement et de test.
+Pour développer et tester notre modèle, le corpus d'entraînement fourni dans \emph{train.txt} a été séparé en corpus d'entraînement (80\%) et de test(20\%)  pour pouvoir évaluer la performance hors-échantillon de notre modèle. 
+
+Ainsi, tous les paramètres seront optimisés par une validation croisée à K-plis sur notre corpus d'entraînement (80\% des données) et on valide la performance du modèle sur le corpus de test.
+
+Après optimisation de nos hyper-paramètres, le modèle est calibré avec l'ensemble du corpus pour mise en production.

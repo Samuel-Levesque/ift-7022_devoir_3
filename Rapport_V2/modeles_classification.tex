@@ -1,4 +1,4 @@
-4 modèles de classification seront testés : SVM, K-PPV, Régression Logistique et MLP. Pour débuter, on peut tester ces modèles avec des paramètres déterminés de façon arbitraire. Pour évaluer le score de performance, on peut utiliser la métrique qui sert à l'évaluation du concours:
+4 modèles de classification seront testés : SVM, K-PPV, Régression Logistique et MLP. Pour débuter, on peut tester ces modèles avec des paramètres déterminés de façon arbitraire. Pour évaluer le score de performance, on utilise la métrique qui sert à l'évaluation du concours:
 
 \includegraphics[width=\linewidth,height=10cm,keepaspectratio]{images/metric_concour}
 
@@ -7,12 +7,12 @@ Cette valeur basée sur le nombre de vrais positifs, de faux négatifs et de fau
 F1_{u} =\frac{2}{\frac{1}{P_{u}}+\frac{1}{R_{u}}}
 \end{equation}
 
-On peut tester les modèles suivants avec nos objets de compte 1 gram avec occurrence minimale de 40:
+Comme première base de comparison, on teste les modèles suivants avec nos objets de compte 1-gramme avec occurrence minimale de 40:
 \begin{description}
 \item \textbf{SVM}(Support Vector Machine): avec paramètres par défaut.
 \item \textbf{KPPV} (K plus proche voisins): avec 5 voisins.
 \item \textbf{Régression Logistique}: avec paramètres par défaut. (Un contre tous pour le cas multivarié)
-\item \textbf{MLP} (Multi Layer Perceptron): avec 2 couches cachées de 100 neurones chaque.
+\item \textbf{MLP} (Multi Layer Perceptron): avec 2 couches cachées de 100 neurones chacune.
 \end{description}
 
 Les résultats ainsi obtenus sont présentés dans la figure \ref{table:modeles_classification}.
@@ -26,6 +26,8 @@ Les résultats ainsi obtenus sont présentés dans la figure \ref{table:modeles_
 	\label{table:modeles_classification}\\
 	\hline
 	&                       & \multicolumn{2}{c}{\textbf{Score F1}}                             \\ 
+	\endfirsthead
+	%
 	\endhead
 	%
 	\cline{2-4}
@@ -48,4 +50,6 @@ Les résultats ainsi obtenus sont présentés dans la figure \ref{table:modeles_
 	& MLP                   & 0,5443 & 0,6115 \\ \hline
 \end{longtable}
 
-On remarque que peu importe le modèle, l'ajout d'autres features que celles de comptes augmente le score du modèle. Les 3 objets de compte semblent avoir des scores similaire d'un modèle à l'autre, on ne peut pas facilement en distinguer un qui sort du lot. Pour ce qui est des modèles de classification, le modèle de régression logistique semble mieux performer que les autres. Cela est probablement dû au fait que les autres modèles ont plus de paramètres à optimiser pour arriver à de bons résultats contrairement à la régression logistique qui en a peu (voir pas).
+On remarque que peu importe le modèle, l'ajout de nos attributs supplémentaires améliore assez significativement la performance du modèle. Les 3 objets de compte semblent avoir des scores similaire d'un modèle à l'autre. On ne peut pas facilement en distinguer un qui sort du lot. 
+
+Pour ce qui est des modèles de classification, le modèle de régression logistique semble mieux performer que les autres. Cela est probablement dû au fait que les autres modèles ont plus d'hyper-paramètres à optimiser pour arriver à de bons résultats contrairement à la régression logistique qui en a peu (voir pas). Nous pensons que les autres modèles profiteront davantage d'une optimisation plus globale des hyper-paramètres.
