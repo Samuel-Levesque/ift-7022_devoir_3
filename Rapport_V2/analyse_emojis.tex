@@ -1,8 +1,26 @@
 En regardant rapidement les données fournies dans le fichier \emph{train.txt}, on peut voir que les échanges de textos sont très courts. Également, il y a beaucoup d'\emph{emojis} et de binettes créés à partir de caractères spéciaux (ex: :), :D, :(, :-)).
 
-On peut regarder le nombre de textes avec la présence d'au moins un emoji particulier selon chaque classe pour voir si ceux-ci semblent être beaucoup plus présents dans une classe ou une autre:
+On peut regarder le nombre de textes avec la présence d'au moins un emoji particulier selon chaque classe pour voir si ceux-ci semblent être beaucoup plus présents dans une classe ou une autre. Les résultats obtenus pour quelques emojis testés se trouvent dans la figure ....
 
-\includegraphics[width=\linewidth,height=15cm,keepaspectratio]{images/analyse_emojis}
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+\begin{table}[]
+	\centering
+	\caption{My caption}
+	\label{my-label}
+	\begin{tabular}{@{}lllll@{}}
+		\toprule
+		Emoji testé & Angry & Happy & Sad & Others \\ \midrule
+		❤           & 8     & 31    & 13  & 41     \\
+		💔          & 2     & 0     & 64  & 3      \\
+		😍          & 10    & 88    & 10  & 92     \\
+		😞          & 15    & 1     & 282 & 15     \\
+		😂          & 59    & 989   & 49  & 197    \\
+		😡          & 156   & 6     & 18  & 10     \\ \bottomrule
+	\end{tabular}
+\end{table}
+
+%\includegraphics[width=\linewidth,height=15cm,keepaspectratio]{images/analyse_emojis}
 
 À première vue, les emojis semblent avoir un impact important. Par exemple, le coeur brisé et le bonhomme triste sont souvent utilisés dans des échanges de textos tristes alors que celui qui fait un sourire est utilisé pour les échanges neutres ou joyeux. Il semble donc pertinent de convertir tous les emojis en texte pour les traiter avec un objet de compte de mots.
 
