@@ -19,7 +19,7 @@ from Model_testing import analyse_rapide_modeles, optimisation_hyper_parametres,
 
 ############################ Options de roulage de code ################################################################
 bool_faire_analyse_donnees_preliminaire = True  # Environ 240 secondes
-bool_anova_other_features = True   ############ TODO
+bool_anova_other_features = False   ############ TODO
 bool_faire_analyse_rapide_modeles = True  # Environ 200 secondes
 bool_faire_longue_optimisation = True  # Environ 2h30
 bool_faire_test_meilleur_model = True  # Environ 240 secondes
